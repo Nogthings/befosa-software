@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 8080",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:migrate": "prisma migrate dev",
+    "db:generate": "prisma generate",
+    "db:seed": "node scripts/seed-admin.js",
+    "setup": "npm run db:generate && npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
@@ -17,8 +21,11 @@
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.3",
     "bcrypt": "^6.0.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "dotenv": "^16.4.5",
+    "lucide-react": "^0.540.0",
     "next": "15.5.0",
     "next-auth": "^4.24.11",
     "pg": "^8.16.3",
